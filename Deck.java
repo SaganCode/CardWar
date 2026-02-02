@@ -15,6 +15,10 @@ public class Deck {
                 cards[index++] = new Card(rank, suit);
             }
         }
+        shuffle();
+    }
+
+    public void shuffle() {
         List<Card> cardList = Arrays.asList(cards);
         java.util.Collections.shuffle(cardList);
         java.util.Collections.shuffle(cardList);
@@ -22,8 +26,16 @@ public class Deck {
         cardList.toArray(cards);
     }
 
-    public void CutTheDeck() {
-        
+    public void cutTheDeck() {
+        Random rng = new Random(System.currentTimeMillis());
+        int x = rng.nextInt(14)+19;
+        Card[] array1 = new Card[x];
+        Card[] array2 = new Card[cards.length-x];
+
+        System.arraycopy(cards, 0, array1, 0, array1.length);
+        System.arraycopy(cards, x, array2, 0, cards.length - x);
+        System.arraycopy(array2, 0, cards, 0, array2.length);
+        System.arraycopy(array1, 0, cards, array2.length, array1.length);
     }
     
 }
