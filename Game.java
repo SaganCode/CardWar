@@ -9,20 +9,37 @@ public class Game {
     Player player4;
     Player[] players;
     List<Player> activePlayers = new ArrayList<>();
+    GameWinner winner;
+    Pool pool;
 
     public void gameStart() {
+        winner = new GameWinner();
         player1 = new Player("Marcin", 1);
         player2 = new Player("Werka", 2);
         player3 = new Player("NULL", 3);
         player4 = new Player("NULL", 4);
         players = new Player[] { player1, player2, player3, player4 };
-        int playerCountTempHandling = 4;
+        int playerCountTempHandling = 2;
+
         settingPlayersActivity(playerCountTempHandling);
         dealCardsToActivePlayers();
-        System.out.println("p1 : " + player1.hand.cardsInHand.size());
-        System.out.println("p2 : " + player2.hand.cardsInHand.size());
-        System.out.println("p3 : " + player3.hand.cardsInHand.size());
-        System.out.println("p4 : " + player4.hand.cardsInHand.size());
+        pool = new Pool(activePlayers);
+
+        // while (!winner.checkIfWon()) {
+        roundPlay(activePlayers);
+        // }
+
+    }
+
+    public void roundPlay(List<Player> activePlayers) {
+        for (Player playing : activePlayers) {
+            pool.addCardToPool(playing.hand.playCard(), playing);
+        }
+        
+        // for(Pair pair : pool.cardsInPlay){
+        //     System.out.println(pair.card.rank + " of " + pair.card.suit + " p: " +
+        //         pair.player.id + " function: " + pair.function);
+        // }
     }
 
     public void settingPlayersActivity(int numberOfPlayers) {
