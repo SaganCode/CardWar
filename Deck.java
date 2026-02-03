@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Collections;
 
 public class Deck {
     Card[] cards;
@@ -20,9 +21,9 @@ public class Deck {
 
     public void shuffle() {
         List<Card> cardList = Arrays.asList(cards);
-        java.util.Collections.shuffle(cardList);
-        java.util.Collections.shuffle(cardList);
-        java.util.Collections.shuffle(cardList);
+        Collections.shuffle(cardList);
+        Collections.shuffle(cardList);
+        Collections.shuffle(cardList);
         cardList.toArray(cards);
     }
 

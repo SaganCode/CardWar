@@ -33,13 +33,38 @@ public class Game {
 
     public void roundPlay(List<Player> activePlayers) {
         for (Player playing : activePlayers) {
-            pool.addCardToPool(playing.hand.playCard(), playing);
+            pool.addCardToPool(playing.hand.playCard(), playing, "fight");
         }
-        
-        // for(Pair pair : pool.cardsInPlay){
-        //     System.out.println(pair.card.rank + " of " + pair.card.suit + " p: " +
-        //         pair.player.id + " function: " + pair.function);
-        // }
+
+        showCardsInPlay();
+        WinnerHandler check = pool.fight();
+        int roundWinnerId = check.id;
+        if (roundWinnerId != -99) {
+            for (Player roundWinner : activePlayers) {
+                if (roundWinnerId == roundWinner.id) {
+                    for (Pair pair : pool.cardsInPlay) {
+                        roundWinner.hand.discardedCards.add(pair.card);
+                    }
+                    pool.cardsInPlay.clear();
+                }
+            }
+            showNumberOfCardsOverall();
+        } else {
+            pool.war(); // TODO
+        }
+    }
+
+    public void showCardsInPlay() {
+        for (Pair pair : pool.cardsInPlay) {
+            System.out.println(pair.card.rank + " of " + pair.card.suit + " p: " +
+                    pair.player.id + " function: " + pair.function);
+        }
+    }
+
+    public void showNumberOfCardsOverall(){
+        for(Player player:activePlayers){
+            System.out.println(player.name + " has " + (player.hand.cardsInHand.size() + player.hand.discardedCards.size())+ " cards."); 
+        }
     }
 
     public void settingPlayersActivity(int numberOfPlayers) {
