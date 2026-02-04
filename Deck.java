@@ -16,11 +16,11 @@ public class Deck {
                 cards[index++] = new Card(rank, suit);
             }
         }
-        shuffle();
+        shuffle(Arrays.asList(cards));
     }
 
-    public void shuffle() {
-        List<Card> cardList = Arrays.asList(cards);
+    public void shuffle(List<Card> cardList) {
+        cardList = Arrays.asList(cards);
         Collections.shuffle(cardList);
         Collections.shuffle(cardList);
         Collections.shuffle(cardList);
