@@ -7,12 +7,12 @@ public class GameWinner {
         wonTheGame = false;
     }
 
-    public void setWinner(Player player){
+    public void setWinner(Player player) {
         this.wonTheGame = true;
         this.winner = player;
     }
 
-    public boolean checkIfWon(){
+    public boolean checkIfWon() {
         return this.wonTheGame;
     }
 }

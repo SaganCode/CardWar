@@ -34,36 +34,36 @@ public class Pool {
     public WinnerHandler winnerOfTheFight(int valueMax) {
         List<Integer> warParticipants = new ArrayList<>();
         WinnerHandler winnerPair;
-        for(int key : playerValue.keySet()){
-            if(playerValue.get(key) == valueMax) {
+        for (int key : playerValue.keySet()) {
+            if (playerValue.get(key) == valueMax) {
                 warParticipants.add(key);
 
             }
         }
-        if(warParticipants.size() == 1){
-            for(int key : playerValue.keySet()) {
-                if(playerValue.get(key) == valueMax){
+        if (warParticipants.size() == 1) {
+            for (int key : playerValue.keySet()) {
+                if (playerValue.get(key) == valueMax) {
                     winnerPair = new WinnerHandler(key, warParticipants);
                     return winnerPair;
                 }
             }
-        } 
+        }
         winnerPair = new WinnerHandler(-99, warParticipants);
         return winnerPair;
     }
 
-    public void war(){  //TODO
+    public void war() { // TODO
         System.out.println("WAR");
     }
 
     public int cardEvaluation(String rank) {
-        if(rank.equals("Jack")){
+        if (rank.equals("Jack")) {
             return 11;
-        } else if(rank.equals("Queen")){
+        } else if (rank.equals("Queen")) {
             return 12;
-        } else if(rank.equals("King")) {
+        } else if (rank.equals("King")) {
             return 13;
-        } else if(rank.equals("Ace")) {
+        } else if (rank.equals("Ace")) {
             return 14;
         } else {
             return Integer.parseInt(rank);

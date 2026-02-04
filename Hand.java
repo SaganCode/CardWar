@@ -22,7 +22,7 @@ public class Hand {
             cardsInHand = stack;
             discardedCards.clear();
         }
-        if(cardsInHand.isEmpty() && discardedCards.isEmpty()){
+        if (cardsInHand.isEmpty() && discardedCards.isEmpty()) {
             Card loser = new Card("LOSER", "HAHA");
             return loser;
         }

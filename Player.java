@@ -15,7 +15,7 @@ public class Player {
         playing = true;
     }
 
-    public boolean isPlaying(){
+    public boolean isPlaying() {
         return playing;
     }
 }

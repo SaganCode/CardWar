@@ -61,9 +61,10 @@ public class Game {
         }
     }
 
-    public void showNumberOfCardsOverall(){
-        for(Player player:activePlayers){
-            System.out.println(player.name + " has " + (player.hand.cardsInHand.size() + player.hand.discardedCards.size())+ " cards."); 
+    public void showNumberOfCardsOverall() {
+        for (Player player : activePlayers) {
+            System.out.println(player.name + " has "
+                    + (player.hand.cardsInHand.size() + player.hand.discardedCards.size()) + " cards.");
         }
     }
 
